@@ -1,2 +1,2 @@
-# library-management-system-java
-Library Management System using java servlet, jsp, JDBC and postgresql
+# bookstore-management-system-java
+Bookstore Management System using java servlet, jsp, JDBC and postgresql
