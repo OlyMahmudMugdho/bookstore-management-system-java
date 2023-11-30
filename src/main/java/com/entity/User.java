@@ -10,8 +10,7 @@ public class User {
 	private String joiningDate;
 	private String role;
 	private String address;
-	
-	
+
 	public String getId() {
 		return id;
 	}
@@ -108,6 +107,5 @@ public class User {
 		this.role = role;
 		this.address = address;
 	}
-	
-	
+
 }
