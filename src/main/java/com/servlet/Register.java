@@ -42,6 +42,17 @@ public class Register extends HttpServlet {
 		user.setPassword(password);
 		
 		UserDAO userDAO = new UserDAO();
+		
+		if(userDAO.checkAlreadyExist(user)) {
+			PrintWriter out = resp.getWriter();
+			out.print("<div class=\"alert alert-danger\">\n"
+					+ "  <strong>Error!</strong> User already exist with this email or phone.\n"
+					+ "</div>");
+			rd = req.getRequestDispatcher("register.jsp");
+			rd.include(req, resp);
+			return ;
+		}
+		
 		int success = userDAO.createUser(user);
 		
 		if(success == 0) {

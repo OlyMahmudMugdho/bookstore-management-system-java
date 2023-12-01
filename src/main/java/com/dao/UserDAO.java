@@ -10,6 +10,7 @@ import com.entity.User;
 public class UserDAO {
 	private final String CREATE_USER_QUERY = "INSERT INTO userlist(Name, DOB, Phone, Email, JoiningDate, Role, Address, Password) VALUES(?,?,?,?,?,?,?,?);";
 	private final String GET_USER_QUERY = "SELECT phone,email,\"password\"  from userlist where \"password\" = ? and (phone = ? or email = ?);";
+	private final String CHECK_USER_QUERY = "select * from userlist where ((phone = ?) or (email = ?) );";
 
 	public int createUser(User user) {
 
@@ -60,6 +61,26 @@ public class UserDAO {
 			}
 			return false;
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean checkAlreadyExist(User user) {
+		try {
+			Connection conn = DBConnection.connect();
+			PreparedStatement ps = conn.prepareStatement(CHECK_USER_QUERY);
+			ps.setString(1, (user.getPhone() == null) ? " " : user.getPhone());
+			ps.setString(2, (user.getEmail() == null) ? " " : user.getEmail());
+			
+			ResultSet rs = ps.executeQuery();
+			if(rs.wasNull()) {
+				return false;
+			}
+			else {
+				return true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
