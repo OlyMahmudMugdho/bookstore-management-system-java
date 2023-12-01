@@ -5,6 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
+		<%@ include file="static/bootstrap.jsp" %>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script>
 			tailwind.config = {
@@ -71,7 +72,7 @@
 							class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
 							Sign in to your account
 						</h1>
-						<form class="space-y-4 md:space-y-6" action="#">
+						<form class="space-y-4 md:space-y-6" method="post" action="login">
 							<div>
 								<label for="email"
 									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your

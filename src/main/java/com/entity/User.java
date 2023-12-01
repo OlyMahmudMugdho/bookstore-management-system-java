@@ -3,6 +3,7 @@ package com.entity;
 public class User {
 	
 	private String id;
+	private String password;
 	private String name;
 	private String dob;
 	private String phone;
@@ -75,30 +76,16 @@ public class User {
 		this.address = address;
 	}
 	
-	public User(String id, String name, String dob, String phone, String email, String joiningDate, String role,
-			String address) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.dob = dob;
-		this.phone = phone;
-		this.email = email;
-		this.joiningDate = joiningDate;
-		this.role = role;
-		this.address = address;
-	}
 	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", dob=" + dob + ", phone=" + phone + ", email=" + email
-				+ ", joiningDate=" + joiningDate + ", role=" + role + ", address=" + address + ", getId()=" + getId()
-				+ ", getName()=" + getName() + ", getDob()=" + getDob() + ", getPhone()=" + getPhone() + ", getEmail()="
-				+ getEmail() + ", getJoiningDate()=" + getJoiningDate() + ", getRole()=" + getRole() + ", getAddress()="
-				+ getAddress() + "]";
+	public String getPassword() {
+		return password;
 	}
 
-	public User(String name, String dob, String phone, String email, String joiningDate, String role, String address) {
+	public User(String id, String password, String name, String dob, String phone, String email, String joiningDate,
+			String role, String address) {
 		super();
+		this.id = id;
+		this.password = password;
 		this.name = name;
 		this.dob = dob;
 		this.phone = phone;
@@ -106,6 +93,23 @@ public class User {
 		this.joiningDate = joiningDate;
 		this.role = role;
 		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", password=" + password + ", name=" + name + ", dob=" + dob + ", phone=" + phone
+				+ ", email=" + email + ", joiningDate=" + joiningDate + ", role=" + role + ", address=" + address
+				+ ", getId()=" + getId() + ", getName()=" + getName() + ", getDob()=" + getDob() + ", getPhone()="
+				+ getPhone() + ", getEmail()=" + getEmail() + ", getJoiningDate()=" + getJoiningDate() + ", getRole()="
+				+ getRole() + ", getAddress()=" + getAddress() + ", getPassword()=" + getPassword() + "]";
+	}
+
+	public User() {
+		super();
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
