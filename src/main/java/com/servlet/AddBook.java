@@ -62,12 +62,13 @@ public class AddBook extends HttpServlet {
 		String edition = req.getParameter("edition");
 		int year = convertToInt(req.getParameter("year"));
 
-		if (name == null) {
+		if (name == null | name.isEmpty() | name.isBlank()) {
 			rd = req.getRequestDispatcher("AddBook.jsp");
 			PrintWriter out = resp.getWriter();
 			out.print("<div class=\"alert alert-danger\">\n" + "  <strong>Error!</strong> Name cannot be empty.\n"
 					+ "</div>");
 			rd.include(req, resp);
+			return;
 		}
 
 		Book book = new Book();
