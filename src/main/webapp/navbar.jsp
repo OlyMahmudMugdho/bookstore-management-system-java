@@ -1,5 +1,5 @@
 <nav class="bg-gray-800 p-4">
-        <div class="container mx-auto flex items-center justify-between h-full">
+        <div class="container mx-auto flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="text-white text-lg font-bold">Book-Store</a>
 

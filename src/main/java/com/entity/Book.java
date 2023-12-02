@@ -5,7 +5,7 @@ public class Book {
 	private String id;
 	private String name;
 	private int pages;
-	private String stocks;
+	private int stocks;
 	private String author;
 	private String publication;
 	private String category;
@@ -38,11 +38,11 @@ public class Book {
 		this.pages = pages;
 	}
 
-	public String getStocks() {
+	public int getStocks() {
 		return stocks;
 	}
 
-	public void setStocks(String stocks) {
+	public void setStocks(int stocks) {
 		this.stocks = stocks;
 	}
 
@@ -101,8 +101,12 @@ public class Book {
 	public void setPrice(float price) {
 		this.price = price;
 	}
+	
+	public Book() {
+		
+	}
 
-	public Book(String id, String name, int pages, String stocks, String author, String publication, String category,
+	public Book(String id, String name, int pages, int stocks, String author, String publication, String category,
 			String location, String edition, int year, float price) {
 		super();
 		this.id = id;
@@ -118,7 +122,7 @@ public class Book {
 		this.price = price;
 	}
 
-	public Book(String name, int pages, String stocks, String author, String publication, String category,
+	public Book(String name, int pages, int stocks, String author, String publication, String category,
 			String location, String edition, int year, float price) {
 		super();
 		this.name = name;

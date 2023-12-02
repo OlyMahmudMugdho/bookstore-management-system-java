@@ -1,5 +1,5 @@
  <div class="w-full flex flex-col justify-start items-center min-h-screen bg-gray-200 pt-7">
-    <form class="flex flex-col h-full justify-center items-center md:bg-white py-7 rounded-lg" action="" method="post">
+    <form class="flex flex-col h-full justify-center items-center md:bg-white py-7 rounded-lg" action="addbook" method="post">
       <div class="w-full h-full flex items-start justify-center mb-14">
         <h1 class="font-bold text-3xl text-blue-500 underline">Add new book</h1>
       </div>
