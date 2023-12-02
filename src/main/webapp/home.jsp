@@ -7,19 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<%@ include file="static/bootstrap.jsp" %>
-
-</head>
-<body>
-	<div>
-		<%	String tokenValue = null;
+<%	String tokenValue = null;
 			Cookie[] cookies = request.getCookies();
 			if(cookies != null) {
 				for(Cookie ck : cookies) {
@@ -48,12 +36,26 @@
 			
 			
 		%>
-	</div>
-	<%@ include file="navbar.html" %>
 		
-
+		
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+     <%@ include file="static/custom-style.jsp"  %>
+    
+</head>
+<body>
+		
+	<%@ include file="navbar.jsp" %>
 	
 	<%@ include file="table.jsp" %>
+	
+	<%@ include file="static/tailwind-script.jsp" %>
 	
 </body>
 </html>
