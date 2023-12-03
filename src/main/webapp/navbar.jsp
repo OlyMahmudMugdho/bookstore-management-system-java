@@ -7,12 +7,14 @@
             <div class="space-x-4 hidden md:flex justify-center items-center h-full">
                 <a href="home.jsp#" class="text-white">Home</a>
                 <a href="AddBook.jsp#" class="text-white">Add Book</a>
+                <a href="home.jsp" class="text-white bg-blue-500 py-2 px-2 rounded text-center">Refresh</a>
                 <a href="logout" class="text-white font-bold bg-red-500 h-full px-3 py-2 rounded-md">Log Out</a>
             </div>
             <!-- Mobile Menu (Hidden by default) -->
             <div id="mobile-menu" class="md:hidden hidden ">
                 <a href="home.jsp#" class="block text-white py-2">Home</a>
                 <a href="AddBook.jsp#" class="block text-white py-2">Add Book</a>
+                <a href="home.jsp" class="block  text-white  bg-blue-500 py-2 px-2 rounded my-2 text-center">Refresh</a>
                 <a href="logout" class="block text-white font-bold bg-red-500 rounded-md px-3 text-center py-2">Log Out</a>
             </div>
 

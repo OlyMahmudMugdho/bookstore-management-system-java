@@ -2,6 +2,9 @@ package com.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.conn.DBConnection;
 import com.entity.Book;
@@ -9,6 +12,8 @@ import com.entity.Book;
 public class BookDAO {
 	private final String ADD_BOOK_QUERY = "insert into book(name,pages,stocks,author,publication,category,location,edition,year,price) \n"
 			+ "values(?,?,?,?,?,?,?,?,?,?);";
+	
+	private final String GET_ALL_BOOKS_QUERY = "select * from book;";
 	
 	public boolean addBook(Book book) {
 		try {
@@ -36,4 +41,62 @@ public class BookDAO {
 			return false;
 		}
 	}
+	
+	
+	public List<Book> getBooks() {
+		List<Book> booklist = new ArrayList<Book>();
+		
+		try {
+			Connection conn = DBConnection.connect();
+			PreparedStatement ps = conn.prepareStatement(GET_ALL_BOOKS_QUERY);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Book book = new Book();
+				book.setId(rs.getString(1));
+				book.setName(rs.getString(2));
+				book.setPages(rs.getInt(3));
+				book.setStocks(rs.getInt(4));
+				book.setAuthor(rs.getString(5));
+				book.setPublication(rs.getString(6));
+				book.setCategory(rs.getString(7));
+				book.setLocation(rs.getString(8));
+				book.setEdition(rs.getString(9));
+				book.setYear(rs.getInt(10));
+				book.setPrice(rs.getFloat(11));
+				
+				booklist.add(book);
+				
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return booklist;
+	}
+	
+	
+	public void printBooks() {
+		List<Book> booklist = new ArrayList<Book>();
+		
+		try {
+			Connection conn = DBConnection.connect();
+			PreparedStatement ps = conn.prepareStatement(GET_ALL_BOOKS_QUERY);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Book book = new Book();
+				//book.setId(rs.getString(1));
+				System.out.println(rs.getString(1));
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return ;
+	}
+	
+	
 }
