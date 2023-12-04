@@ -22,6 +22,7 @@
                 <!-- Example row, you can add more rows with your data -->
                 
                 <% 
+                	String editBookUrl = "http://localhost:8080/bookstore-management/EditBook.jsp?id=";
                 	BookDAO bd = new BookDAO();
                 	List<Book> booklist = bd.getBooks();
                 	
@@ -40,8 +41,8 @@
                     <td class="py-2 px-4 border"><% out.print(book.getEdition()); %></td>
                     <td class="py-2 px-4 border"><% out.print(book.getYear()); %></td>
                     <td class="py-2 px-4 border flex justify-center items-center text-center">
-                        <button class="text-center
-text-center bg-blue-500 text-white px-4 py-2 rounded font-semibold">Edit</button>
+                        <a href=<% out.print(editBookUrl + book.getId()); %> class="text-center
+text-center bg-blue-500 text-white px-4 py-2 rounded font-semibold">Edit</a>
                         <button class="text-center
 text-center bg-red-500 text-white px-4 py-2 rounded ml-2 font-semibold">Delete</button>
                     </td>
