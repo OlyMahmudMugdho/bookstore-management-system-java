@@ -1,12 +1,9 @@
 <%@page import="com.entity.Book" %>
 <%@page import="com.dao.BookDAO" %>
 
+
 		<% 
         	String idAsString = request.getParameter("id");
-			if(idAsString == null) {
-				response.sendRedirect("error.jsp");
-				return;
-			}
 			int id = Integer.parseInt(idAsString);
         	BookDAO bd = new BookDAO();
         	Book book = bd.getBookFromID(id);

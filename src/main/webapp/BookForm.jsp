@@ -1,3 +1,5 @@
+
+
  <div class="w-full flex flex-col justify-start items-center min-h-screen bg-gray-200 pt-7">
     <form class="flex flex-col h-full justify-center items-center md:bg-white py-7 rounded-lg" action="addbook" method="post">
       <div class="w-full h-full flex items-start justify-center mb-14">
@@ -5,6 +7,10 @@
       </div>
         <div class="flex flex-col  md:flex-row">
           <div class="flex flex-col justify-center items-center mx-5">
+            <div class="flex flex-col justify-start items-start w-full mb-2">
+              <label for="id">ID</label>
+              <input name="id" type="text" class="border border-solid border-black rounded-md h-10 w-full px-2">
+            </div>
             <div class="flex flex-col justify-start items-start w-full mb-2">
               <label for="name">Name</label>
               <input name="name" type="text" class="border border-solid border-black rounded-md h-10 w-full px-2">
@@ -38,6 +44,10 @@
             <div class="flex flex-col justify-center items-start w-full mb-2">
               <label for="year">Year</label>
               <input name="year" type="number" class="border border-solid border-black rounded-md h-10 w-full px-2">
+            </div>
+            <div class="flex flex-col justify-start items-start w-full mb-2">
+              <label for="description">Description</label>
+              <input name="description" type="text" class="border border-solid border-black rounded-md h-10 w-full px-2">
             </div>
           </div>
           <div>

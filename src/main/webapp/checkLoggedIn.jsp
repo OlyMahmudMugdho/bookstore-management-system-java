@@ -1,11 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="com.conn.DBConnection"%>
-<%@page import="javax.servlet.http.Cookie" %>
-<%@page import="com.auth0.jwt.algorithms.Algorithm" %>
-<%@page import="com.auth0.jwt.JWT" %>
-<%@page import="com.auth0.jwt.JWTVerifier" %>
-<%@page import="com.auth0.jwt.interfaces.*" %>
+
 
 <%	String tokenValue = null;
 			Cookie[] cookies = request.getCookies();

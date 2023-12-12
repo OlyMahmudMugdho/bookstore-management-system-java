@@ -33,6 +33,7 @@ public class Login extends HttpServlet {
 		user.setPassword(password);
 		
 		UserDAO userDAO = new UserDAO();
+		
 		boolean matched = userDAO.loginUser(user);
 		
 		if(matched) {

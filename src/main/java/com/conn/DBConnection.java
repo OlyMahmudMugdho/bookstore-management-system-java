@@ -11,7 +11,8 @@ public class DBConnection {
 	public static final String url = "jdbc:postgresql://localhost:5432/bookstore";
 	public static final String user = "postgres";
 	public static final String password = "password";
-	
+
+
 	private DBConnection() {
 		
 	}
@@ -24,6 +25,7 @@ public class DBConnection {
 				conn = DriverManager.getConnection(url, user, password);
 				System.out.println("connected to database");
 			}
+			return conn;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

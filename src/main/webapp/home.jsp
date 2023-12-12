@@ -6,8 +6,9 @@
 <%@page import="com.auth0.jwt.interfaces.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%	String tokenValue = null;
+
+<%	
+			String tokenValue = null;
 			Cookie[] cookies = request.getCookies();
 			if(cookies != null) {
 				for(Cookie ck : cookies) {
@@ -19,6 +20,7 @@
 			
 			if(cookies==null) {
 				response.sendRedirect("index.jsp");
+				return;
 			}
 			
 			try {
@@ -27,11 +29,11 @@
 						.withIssuer("auth0")
 						.build();
 				DecodedJWT decodedJWT = verifier.verify(tokenValue);
-					
+
 			}
 			catch(Exception e) {
 				e.printStackTrace();
-				response.sendRedirect("logout");
+				response.sendRedirect("index.jsp");
 			}
 			
 			

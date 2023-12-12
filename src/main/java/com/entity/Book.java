@@ -2,7 +2,7 @@ package com.entity;
 
 public class Book {
 	
-	private String id;
+	private int id;
 	private String name;
 	private int pages;
 	private int stocks;
@@ -13,12 +13,21 @@ public class Book {
 	private String edition;
 	private int year;
 	private float price;
-	
-	public String getId() {
+	private String description;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -106,8 +115,8 @@ public class Book {
 		
 	}
 
-	public Book(String id, String name, int pages, int stocks, String author, String publication, String category,
-			String location, String edition, int year, float price) {
+	public Book(int id, String name, int pages, int stocks, String author, String publication, String category,
+				String location, String edition, int year, float price) {
 		super();
 		this.id = id;
 		this.name = name;

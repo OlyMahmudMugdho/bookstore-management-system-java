@@ -11,11 +11,12 @@ import com.conn.DBConnection;
 import com.entity.Book;
 
 public class BookDAO {
-	private final String ADD_BOOK_QUERY = "insert into book(name,pages,stocks,author,publication,category,location,edition,year,price) \n"
-			+ "values(?,?,?,?,?,?,?,?,?,?);";
+	private final String ADD_BOOK_QUERY = "insert into book(id,name,pages,stocks,author,publication,category,location,edition,year,price) \n"
+			+ "values(?,?,?,?,?,?,?,?,?,?,?);";
 	
-	private final String GET_ALL_BOOKS_QUERY = "select * from book;";
+	private final String GET_ALL_BOOKS_QUERY = "select * from book order by \"name\";";
 	private final String GET_SINGLE_BOOK = "select * from book where id = ?;";
+	private final String DELETE_BOOK_QUERY = "delete from book where id = ?;";
 	private final String EDIT_BOOK_QUERY = "update\n"
 			+ "	book\n"
 			+ "set\n"
@@ -36,16 +37,17 @@ public class BookDAO {
 		try {
 			Connection conn = DBConnection.connect();
 			PreparedStatement ps = conn.prepareStatement(ADD_BOOK_QUERY);
-			ps.setString(1,(book.getName()==null) ? " " : book.getName() );
-			ps.setInt(2, book.getPages() );
-			ps.setInt(3, book.getStocks());
-			ps.setString(4, (book.getAuthor() == null) ? " " : book.getAuthor());
-			ps.setString(5, (book.getPublication() == null) ? " " : book.getPublication());
-			ps.setString(6, (book.getCategory() == null) ? " " : book.getCategory());
-			ps.setString(7, (book.getLocation() == null) ? " " : book.getLocation());
-			ps.setString(8, (book.getEdition() == null) ? " " : book.getEdition());
-			ps.setInt(9, book.getYear());
-			ps.setFloat(10, book.getPrice());
+			ps.setInt(1,book.getId());
+			ps.setString(2,(book.getName()==null) ? " " : book.getName() );
+			ps.setInt(3, book.getPages() );
+			ps.setInt(4, book.getStocks());
+			ps.setString(5, (book.getAuthor() == null) ? " " : book.getAuthor());
+			ps.setString(6, (book.getPublication() == null) ? " " : book.getPublication());
+			ps.setString(7, (book.getCategory() == null) ? " " : book.getCategory());
+			ps.setString(8, (book.getLocation() == null) ? " " : book.getLocation());
+			ps.setString(9, (book.getEdition() == null) ? " " : book.getEdition());
+			ps.setInt(10, book.getYear());
+			ps.setFloat(11, book.getPrice());
 			
 			int isExecuted =  ps.executeUpdate();
 			System.out.println(isExecuted);
@@ -70,7 +72,7 @@ public class BookDAO {
 			
 			while(rs.next()) {
 				Book book = new Book();
-				book.setId(rs.getString(1));
+				book.setId(rs.getInt(1));
 				book.setName(rs.getString(2));
 				book.setPages(rs.getInt(3));
 				book.setStocks(rs.getInt(4));
@@ -103,7 +105,7 @@ public class BookDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
-				book.setId(rs.getString(1));
+				book.setId(rs.getInt(1));
 				book.setName(rs.getString(2));
 				book.setPages(rs.getInt(3));
 				book.setStocks(rs.getInt(4));
@@ -120,7 +122,7 @@ public class BookDAO {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println(book.toString());
 		return  book;
 	}
 	
@@ -142,7 +144,7 @@ public class BookDAO {
 			ps.setString(8, (book.getEdition() == null) ? " " : book.getEdition());
 			ps.setInt(9, book.getYear());
 			ps.setFloat(10, book.getPrice());
-			ps.setInt(11, Integer.parseInt(book.getId()));
+			ps.setInt(11, book.getId());
 			
 			System.out.println(ps.toString());
 			int isExecuted =  ps.executeUpdate();
@@ -157,6 +159,26 @@ public class BookDAO {
 		}
 	}
 	
+	
+	public boolean deleteBook(int id) {
+		try {
+			Connection conn = DBConnection.connect();
+			PreparedStatement ps = conn.prepareStatement(DELETE_BOOK_QUERY);
+			ps.setInt(1, id);
+			int isExecuted = ps.executeUpdate();
+			
+			if(isExecuted==1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 	
 	

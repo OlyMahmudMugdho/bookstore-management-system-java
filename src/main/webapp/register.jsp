@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%@page import="com.conn.DBConnection"%>
+<%@page import="javax.servlet.http.Cookie" %>
+<%@page import="com.auth0.jwt.algorithms.Algorithm" %>
+<%@page import="com.auth0.jwt.JWT" %>
+<%@page import="com.auth0.jwt.JWTVerifier" %>
+<%@page import="com.auth0.jwt.interfaces.*" %>
 <%@ include file="checkLoggedIn.jsp" %>
 
 
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 	<%@ include file="static/bootstrap.jsp" %>
 	<script src="https://cdn.tailwindcss.com"></script>

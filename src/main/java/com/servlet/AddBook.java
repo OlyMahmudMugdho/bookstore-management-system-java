@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dao.BookDAO;
+import com.dao.UserDAO;
 import com.entity.Book;
 
 @WebServlet("/addbook")
@@ -51,8 +52,13 @@ public class AddBook extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
+		UserDAO userDAO = new UserDAO();
+		userDAO.isAuthenticated(req, resp);
+		
 		RequestDispatcher rd;
 
+		String id = req.getParameter("id");
 		String name = req.getParameter("name");
 		int pages = convertToInt(req.getParameter("pages"));
 		int stocks = convertToInt(req.getParameter("stocks"));
@@ -61,8 +67,9 @@ public class AddBook extends HttpServlet {
 		float price = convertToFloat(req.getParameter("price"));
 		String edition = req.getParameter("edition");
 		int year = convertToInt(req.getParameter("year"));
+		String description = req.getParameter("description");
 
-		if (name == null | name.isEmpty() | name.isBlank()) {
+		if ((name == null) | name.isEmpty()) {
 			rd = req.getRequestDispatcher("AddBook.jsp");
 			PrintWriter out = resp.getWriter();
 			out.print("<div class=\"alert alert-danger\">\n" + "  <strong>Error!</strong> Name cannot be empty.\n"
@@ -72,6 +79,7 @@ public class AddBook extends HttpServlet {
 		}
 
 		Book book = new Book();
+		book.setId(Integer.parseInt(id));
 		book.setName(name);
 		book.setPages(pages);
 		book.setStocks(stocks);
@@ -80,6 +88,7 @@ public class AddBook extends HttpServlet {
 		book.setPrice(price);
 		book.setEdition(edition);
 		book.setYear(year);
+		book.setDescription(description);
 
 		BookDAO bd = new BookDAO();
 
